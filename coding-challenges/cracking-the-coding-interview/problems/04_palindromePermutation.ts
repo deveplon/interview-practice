@@ -10,5 +10,23 @@
 // ```
 
 export default function palindromePermutation (str: string): boolean {
+  const charsCounter: Record<string, number> = {}
+  for (const char of str.toLowerCase()) {
+    if (/\s/.test(char)) {
+      continue
+    }
 
+    if (!charsCounter[char]) {
+      charsCounter[char] = 0
+    }
+    
+    charsCounter[char] += 1
+  }
+
+  let counter = 0
+  for (const char in charsCounter) {
+      counter += charsCounter[char] % 2
+  }
+
+  return counter <= 1
 }
