@@ -6,5 +6,22 @@
 type Matrix = number[][]
 
 export default function rotateMatrix (matrix: Matrix) {
+  let left = 0;
+  let right = matrix.length - 1;
 
+  while (left < right) {
+    for (let i = 0; i < right - left; i++) {
+      const top = left
+      const bottom = right
+      const endAtTopLeft = matrix[bottom - i][left]
+
+      matrix[bottom - i][left] = matrix[bottom][right - i]
+      matrix[bottom][right - i] = matrix[top + i][right]
+      matrix[top + i][right] = matrix[top][left + i]
+      matrix[top][left + i] = endAtTopLeft
+    }
+
+    left += 1
+    right -= 1
+  }
 }
