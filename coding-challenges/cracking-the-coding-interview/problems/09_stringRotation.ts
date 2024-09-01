@@ -9,5 +9,6 @@ function isSubstring(s1: string, s2: string): boolean {
 }
 
 export default function stringRotation(s1: string, s2: string): boolean {
+  return isSubstring(s2 + s2, s1)
 
 }
